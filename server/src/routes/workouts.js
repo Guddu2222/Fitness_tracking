@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { requireAuth } from '../middleware/auth.js';
+import { listWorkouts, createWorkout, updateWorkout, deleteWorkout } from '../controllers/workoutController.js';
+const r = Router();
+r.use(requireAuth);
+r.get('/', listWorkouts);
+r.post('/', createWorkout);
+r.put('/:id', updateWorkout);
+r.delete('/:id', deleteWorkout);
+export default r;

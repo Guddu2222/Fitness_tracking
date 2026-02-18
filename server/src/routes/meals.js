@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { requireAuth } from '../middleware/auth.js';
+import { listMeals, createMeal, updateMeal, deleteMeal } from '../controllers/mealController.js';
+const r = Router();
+r.use(requireAuth);
+r.get('/', listMeals);
+r.post('/', createMeal);
+r.put('/:id', updateMeal);
+r.delete('/:id', deleteMeal);
+export default r;

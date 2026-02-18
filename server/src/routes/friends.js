@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { requireAuth } from '../middleware/auth.js';
+import { follow, unfollow, leaderboard, getFeed, searchUsers } from '../controllers/friendController.js';
+const r = Router();
+r.use(requireAuth);
+r.get('/search', searchUsers);
+r.get('/feed', getFeed);
+r.post('/follow', follow);
+r.post('/unfollow', unfollow);
+r.get('/leaderboard', leaderboard);
+export default r;

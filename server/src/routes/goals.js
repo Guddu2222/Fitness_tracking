@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { requireAuth } from '../middleware/auth.js';
+import { listGoals, createGoal, updateGoal, deleteGoal } from '../controllers/goalController.js';
+const r = Router();
+r.use(requireAuth);
+r.get('/', listGoals);
+r.post('/', createGoal);
+r.put('/:id', updateGoal);
+r.delete('/:id', deleteGoal);
+export default r;
